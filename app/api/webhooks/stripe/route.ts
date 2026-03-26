@@ -36,9 +36,11 @@ export async function POST(req: Request) {
       // 1. Fetch the actual subscription details from Stripe
       const subscription = await stripe.subscriptions.retrieve(subscriptionId);
       
-      // 2. Convert Stripe's Unix timestamp to a JS ISO string
-      // Stripe gives dates in seconds, JS needs milliseconds
-      const periodEnd = new Date((subscription as any).current_period_end * 1000).toISOString();
+      // 1. Get the timestamp safely (falling back to "now + 30 days" if Stripe is silent)
+const timestamp = (subscription as any)?.current_period_end || (Math.floor(Date.now() / 1000) + 2592000);
+
+// 2. Convert to ISO string safely
+const periodEnd = new Date(timestamp * 1000).toISOString();
 
       const planType = session.amount_total === 5000 ? "monthly" : "yearly";
 
