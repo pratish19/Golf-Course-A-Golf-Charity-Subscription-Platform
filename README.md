@@ -1,36 +1,85 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Deployed Links: https://golf-course-a-golf-charity-subscription-platform-6pi-j7njr308c.vercel.app/login
+⛳ Golf Course: A Golf Charity Subscription Platform
+Golf Course is a high-performance, mobile-first Web3-style subscription platform where golf enthusiasts can log their scores, support global charities, and participate in automated prize draws. Built with a focus on transparency and social impact, the platform turns every game of golf into an opportunity for giving.
 
-## Getting Started
+🚀 Key Features
+For Players
+Role-Based Dashboards: Distinct experiences for Players and Administrators.
 
-First, run the development server:
+Subscription Engine: Monthly and Yearly membership plans powered by Stripe.
 
-```bash
+Impact Tracking: Users select a charity and set their contribution percentage (10%–100%).
+
+Score Logging: Simple mobile interface to log recent game points (limited to 5 active scores).
+
+Prize Center: Automated winning notifications with a secure Supabase Storage proof-upload system for verification.
+
+For Administrators
+The Draw Engine: A custom-built algorithm that evaluates player scores against drawn numbers, calculates match counts (3, 4, or 5), and manages a Jackpot Rollover system.
+
+Verification Queue: A dedicated portal to review "Proof of Win" documents and approve payouts.
+
+Analytics Command Center: Real-time stats on active subscribers, estimated revenue, and current prize pools.
+
+User & Charity Management: Tools to manage the global charity directory and monitor user subscription statuses.
+
+🛠️ Tech Stack
+Framework: Next.js 15 (App Router)
+
+Styling: Tailwind CSS (Dark Mode / Zinc-Emerald aesthetic)
+
+Database & Auth: Supabase
+
+Payments: Stripe API
+
+Deployment: Vercel
+
+Language: TypeScript
+
+📂 Project Structure
+Plaintext
+├── app/
+│   ├── (admin)/dashboard   # Admin-only control center
+│   ├── (auth)/login        # Smart-routing authentication
+│   ├── (dashboard)/page    # Player-centric dashboard
+│   └── api/
+│       ├── billing         # Stripe Checkout Session logic
+│       └── webhooks/stripe # Secure payment/subscription sync
+├── components/             # Reusable UI (CharitySlider, PricingCards, etc.)
+├── lib/
+│   ├── supabase/           # Server/Client database utilities
+│   └── utils.ts            # Formatting and logic helpers
+└── public/                 # Static assets and brand assets
+⚙️ Installation & Setup
+Clone the repository:
+
+Bash
+git clone https://github.com/pratish19/Golf-Course-A-Golf-Charity-Subscription-Platform.git
+cd Golf-Course-A-Golf-Charity-Subscription-Platform
+Install dependencies:
+
+Bash
+npm install
+Environment Variables:
+Create a .env.local file and add your credentials:
+
+Code snippet
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_key
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=your_stripe_pub_key
+STRIPE_SECRET_KEY=your_stripe_secret_key
+STRIPE_WEBHOOK_SECRET=your_stripe_webhook_secret
+Run the development server:
+
+Bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+🛡️ Security
+Middleware Protection: Routes are protected based on authentication state.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Admin Isolation: The /admin route is strictly constrained to the master admin email.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Impersonation Protection: Registration logic prevents users from using reserved names like "Admin."
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Signature Verification: Stripe webhooks use secret signing to prevent unauthorized database updates.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Developed with ❤️ by Pratish
