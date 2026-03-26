@@ -141,7 +141,7 @@ export default async function DashboardPage() {
                 <p className="text-white font-bold text-sm">
                   {isSubscribed ? "Entered in Next Draw" : "Subscription Required"}
                 </p>
-                {isSubscribed && settings?.rollover_amount > 0 && (
+                {isSubscribed && (settings?.rollover_amount || 0) > 0 && (
   <p className="text-[10px] text-amber-400 font-bold mt-1 animate-pulse tracking-tight">
     + ₹{Number(settings?.rollover_amount || 0).toLocaleString()} Jackpot Rollover
   </p>
