@@ -38,7 +38,7 @@ export async function POST(req: Request) {
       
       // 2. Convert Stripe's Unix timestamp to a JS ISO string
       // Stripe gives dates in seconds, JS needs milliseconds
-      const periodEnd = new Date(subscription.current_period_end * 1000).toISOString();
+      const periodEnd = new Date((subscription as any).current_period_end * 1000).toISOString();
 
       const planType = session.amount_total === 5000 ? "monthly" : "yearly";
 
