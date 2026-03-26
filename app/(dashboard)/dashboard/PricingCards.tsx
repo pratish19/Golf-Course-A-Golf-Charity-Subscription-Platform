@@ -29,8 +29,8 @@ export default function PricingCards() {
     setLoading(null);
   };
 
+  // If the mouse leaves the whole container, default the highlight back to Yearly
   return (
-    {/* If the mouse leaves the whole container, default the highlight back to Yearly */},
     <div 
       className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 max-w-3xl mx-auto"
       onMouseLeave={() => setHoveredPlan("yearly")}

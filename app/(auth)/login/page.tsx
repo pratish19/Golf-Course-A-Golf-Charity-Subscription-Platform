@@ -80,7 +80,10 @@ export default async function LoginPage({
       <div className="w-full max-w-md space-y-8 bg-zinc-900 p-8 sm:p-10 rounded-3xl border border-zinc-800 shadow-2xl">
         
         <div className="text-center">
-          <h2 className="text-3xl font-black text-white tracking-tight">Welcome to Golf Cart</h2>
+          <h2 className="text-3xl font-black text-white tracking-tight">Golf Course</h2>
+          <p className="text-400 mt-2 text-amber-200 text-sm font-medium">
+            A Golf Charity Subscription Platform
+          </p>
           <p className="text-zinc-400 mt-2 text-sm font-medium">
             Sign in or create an account.
           </p>
